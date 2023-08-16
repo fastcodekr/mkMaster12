@@ -34,7 +34,6 @@ const PostList = ({ posts }) => {
 
   return (
     <>
-<<<<<<< HEAD
       <div>
         <div className="text-center">
           <h1 className="my-8 p-4 text-3xl">게시판</h1>
@@ -73,21 +72,6 @@ const PostList = ({ posts }) => {
             <button onClick={nextPage} className="bg-blue-500 text-white px-4 py-2 rounded">next</button>
           )}
         </div>
-=======
-      {posts.map((post, idx) => (
-        <tr
-          key={idx}
-          className="hover:bg-gray-200 "
-          onClick={() => router.push(`/post/${post.id}`)}
-        >
-          <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-            {truncate(post.title,  30)}
-          </td>
-
-          <td className="whitespace-nowrap px-3 py-2 text-sm text-gray-500">
-            {truncate(post.content, 50)}
-          </td>
->>>>>>> eeae7544d8dec713c58ed56439aa9ef544beb40a
 
       </div>
     </>
