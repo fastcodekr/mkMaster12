@@ -32,6 +32,7 @@ const PostList = ({ posts }) => {
 
   const router = useRouter();
 
+
   return (
     <>
       <div>

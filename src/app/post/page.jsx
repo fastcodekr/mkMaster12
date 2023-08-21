@@ -1,21 +1,31 @@
-import Link from "next/link";
+"use client"
 import PostList from "./PostList";
+import {useEffect,useState} from "react";
 
-async function getData() {
-  const res = await fetch(`${process.env.NEXTAUTH_URL}/api/post`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    return null;
-  }
-  return await res.json(); // await 키워드 추가
-  // return data;
-}
+const Post = () => {
+  const [posts,setPosts] = useState([])  
+
+  useEffect(() => {
+    // 비동기 함수 정의
+    async function fetchData() {
+      try {
+        const res = await fetch(`http://localhost:3000/api/post`);
+        // 응답 상태 코드 확인
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+        console.log(res)
+        setPosts(await res.json());
+      } catch (err) {
+        // 오류 처리
+        console.error(err);
+      }
+    }
+    // 비동기 함수 호출
+    fetchData();
+  }, []); // 의존성 배열 빈 배열로 설정
 
 
-const Post = async () => {
-  const posts =await getData();
-  // console.log(posts);
 
   return (
     <div>
